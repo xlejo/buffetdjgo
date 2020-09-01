@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %} 
+{% load static %}
+<div class="card-group">
+  {% for i in object %}
+  <div class="col mb-4">
+    <div class="card h-100 mx-auto" style="width: 23rem;">
+      <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ i.title }}</h5>
+        <p class="card-text">{{ i.description }}</p>
+
+        {%if i.promotion %}
+        <p class="card-text">Precio: ${{ i.price }} 
+        <div class="badge bg-primary " style="width: 6rem;">
+          PROMOCIÓN
+        </div></p>
+        {% else %}
+          <p class="card-text">Precio: ${{ i.price }}</p>
+        {% endif %}
+
+        <a href="#" class="btn btn-primary">Añadir</a>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+{% endblock %}
